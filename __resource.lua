@@ -21,8 +21,8 @@ client_scripts {
 files{
     "html/index.html",
     "html/index.js",
-    "html/style/main.css",
-    "html/style/reset.css",
+    "html/css/main.css",
+    "html/css/reset.css",
     "html/image/LSPD.png"
 }
 
