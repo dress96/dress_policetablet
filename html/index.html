@@ -1,8 +1,8 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="style/reset.css" type="text/css">
-    <link rel="stylesheet" href="style/main.css" type="text/css">
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
     <script src="nui://game/ui/jquery.js" type ="text/javascript"></script>
 
@@ -62,17 +62,28 @@
                         </div>
                     </div>
                     <div class ="criminal-history">
-                        <h2>Historiales de delicuentes</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                         
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim                        
-                            id est laborum. Criminal History</p>                                          
-                        <center><img src="https://www.liderempresarial.com/wp-content/uploads/2017/10/Steve-Jobs.jpg"></center>
+                        <h2>Historiales delictivos</h2>
+                        <p>Por favor, introduzca el nombre y apellido de la persona que desee buscar en la base de datos</p> 
+                        <form id ="search-form">
+                            <input type="text" id="search-history">
+                            <button id="btn-search-history" type="button"> Buscar</button>
+                        </form> 
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombre y apellido</th>
+                                    <th>Fecha de nacimiento</th>
+                                    <th>Número de telefono</th>
+                                </tr>
+                            </thead>
+                            <tbody id="search-table">
+                            </tbody>
+                        </table>
                     </div>
                     <div class ="new-tab">
                         <h2>Crear una nueva ficha</h2>
                         <div class="main-form">                        
-                            <form id="new-file">                           
+                            <form id="new-file">                         
                                 <label for="form-information">Nombre y apellidos</label>          
                                 <input type="text" id="name"> 
                                 <br>
@@ -85,7 +96,7 @@
                                 <label for="form-information">Sancion impuesta</label>          
                                 <input type="text" id="assent"> 
                                 <br>
-                                <label for="form-information">Delítos Comentidos</label>
+                                <label for="form-information">Delitos Comentidos</label>
                                 <br>
                                 <textarea id="crimeinformation" name="crime-information" rows="9" cols="125"></textarea>
                                 <br>
@@ -95,6 +106,29 @@
                                 <br> 
                                 <button id="createhistory" type="button" disabled>Crear nueva ficha</button>
                             </form>
+                        </div>
+                    </div>
+                    <div class="criminal-data">
+                        <h2>Ficha delictiva</h2>
+                        <div id ="history-grid">
+                            <div id="history-main">
+                                <form id = "criminal-form">
+                                    <label for="form-information">Nombre y apellidos</label>        
+                                    <input type="text" id="criminal-name">
+                                    <br>
+                                    <label for="form-information">Fecha de nacimiento</label>        
+                                    <input type="date" id="criminal-birthday" name="birthday"> 
+                                    <br>
+                                    <label for="form-information">Número de telefono</label>         
+                                    <input type="text" id="criminal-phone">
+                                </form>
+                            </div>
+                            <div id ="history-photo">Photo area</div>
+                            <div id="history-crimes"> 
+                                <textarea></textarea>
+                                <br>
+                                <textarea></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class ="deceased">

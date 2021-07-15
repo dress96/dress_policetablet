@@ -1,5 +1,5 @@
 $(function () {
-    /*function SetTablet(bool)
+    function SetTablet(bool)
     {
         if (bool) {
             $("#content").show();
@@ -27,7 +27,7 @@ $(function () {
             $.post("http://stahl_policetablet/exit", JSON.stringify({}));
             return;
         }
-    }*/
+    }
     $("#new-file input").keyup(function() {
         var form = $(this).parents("#new-file");
         var check = checkInput(form);
@@ -69,7 +69,7 @@ $(function () {
       let crimeInformationValue = $('#crimeinformation').val();
       let extraComentaryValue = $('#extracomentary').val();
 
-      $.post("http://stahl_policetablet/add-history", JSON.stringify({
+      $.post("http://dress_policetablet/add-history", JSON.stringify({
           criminalName: criminalNameValue,
           phoneNumber: phoneNumberValue,
           assent: assentValue,
@@ -77,9 +77,44 @@ $(function () {
           extraComentary: extraComentaryValue
       }));
 
-      $('.new-tab').css("display","none");
-      $('.criminal-history').css("display","block"); // Change when it create the criminal record in the table
+      $('.new-tab').removeClass('header-active');
+      $('.criminal-history').addClass('header-active'); // Change when it create the criminal record in the table
   });
+
+  $('#btn-search-history').click(function(event){
+      let searchHistoryValue = $('#search-history').val();
+      $.post('http://dress_policetablet/search-history', JSON.stringify({searchHistory: searchHistoryValue}),function(historyData){
+          searchTable(historyData);
+      });
+  });
+
+  $('#search-table').on('click','tr td', function(event){
+      let historyid = $(event.target).parent().data('historyid');
+
+      let currentRow = $(this).closest('tr');
+      let criminalName = currentRow.find('td:eq(0)').text();
+      let phoneNumber = currentRow.find('td:eq(2)').text();
+
+      $('#criminal-name').val(criminalName);
+      $('#criminal-phone').val(phoneNumber);
+
+      $.post('http://dress_policetablet/fetch-history',JSON.stringify({historyid: historyid}), function(historyFetch) {
+
+          $('.criminal-history').removeClass('header-active');
+          $('.criminal-data').addClass('header-active');
+
+      });
+  });
+
+  function searchTable(historyData) {
+    $('#search-table').empty();
+    for (const data of historyData)
+    {
+        let html = '<tr data-historyid ="' + data.historyID + '"><td>' + data.criminal_name + '</td><td>12/2/1990</td><td>' + data.phone_number + '</td></tr>';
+        $('#search-table').append(html);
+    }
+
+  }
 
   function checkInput(obj) {
     var inputfill = true;
