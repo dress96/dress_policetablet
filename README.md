@@ -1,7 +1,5 @@
 # FiveM - Dress police MDT
 
-# FiveM - Dress police MDT
-
 This new project, I am creating a new police tablet based to a ios system in a ipad. Currently, only parts have finished the code but other parts, is in process. The following is ready:
 
 - Based html/css page and adactable a many screen resolutions in GTA.
